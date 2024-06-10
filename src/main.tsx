@@ -10,7 +10,7 @@ import ConfirmationDialogProvider from './context/ConfirmationDialogProvider'
 import './index.css'
 
 const client = new ApolloClient({
-	uri: 'http://localhost:3000/gql',
+	uri: import.meta.env.VITE_API_URL,
 	cache: new InMemoryCache({}),
 	resolvers: {
 		Risk: {
