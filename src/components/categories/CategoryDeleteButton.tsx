@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/client'
-import DeleteButton from '@components/DeleteButton'
-import { DELETE_CATEGORY } from '@gql/mutations'
-import { GET_CATEGORIES } from '@gql/queries'
-import { useConfirmationDialog } from '@hooks/useConfirmationDialog'
 import { FC } from 'react'
+import { DELETE_CATEGORY } from '../../gql/mutations'
+import { GET_CATEGORIES } from '../../gql/queries'
+import { useConfirmationDialog } from '../../hooks/useConfirmationDialog'
+import DeleteButton from '../DeleteButton'
 
 const CategoryDeleteButton: FC<{
 	id: string

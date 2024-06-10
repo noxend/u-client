@@ -1,8 +1,8 @@
 import { useMutation } from '@apollo/client'
-import EditableCell from '@components/EditableCell'
-import { UPDATE_RISK_NAME } from '@gql/mutations'
 import { FC } from 'react'
 import { toast } from 'sonner'
+import { UPDATE_RISK_NAME } from '../../gql/mutations'
+import EditableCell from '../EditableCell'
 
 type RiskEditableNameCellProps = {
 	id: string

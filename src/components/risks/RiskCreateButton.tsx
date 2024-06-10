@@ -1,8 +1,4 @@
 import { useMutation } from '@apollo/client'
-import RiskForm, { FormValues } from '@components/risks/RiskForm'
-import { CREATE_RISK } from '@gql/mutations'
-import { GET_RISKS } from '@gql/queries'
-import useCurrentUser from '@hooks/useCurrentUser'
 import {
 	Button,
 	Modal,
@@ -15,6 +11,10 @@ import {
 import { Plus } from 'lucide-react'
 import { useRef } from 'react'
 import { SubmitHandler } from 'react-hook-form'
+import { CREATE_RISK } from '../../gql/mutations'
+import { GET_RISKS } from '../../gql/queries'
+import useCurrentUser from '../../hooks/useCurrentUser'
+import RiskForm, { FormValues } from './RiskForm'
 
 const RiskCreateButton = () => {
 	const { isOpen, onOpenChange, onOpen, onClose } = useDisclosure()

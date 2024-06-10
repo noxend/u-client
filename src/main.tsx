@@ -1,12 +1,12 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import AuthProvider from '@context/AuthProvider'
-import ConfirmationDialogProvider from '@context/ConfirmationDialogProvider'
 import { NextUIProvider } from '@nextui-org/react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Toaster } from 'sonner'
 import App from './App'
 
+import AuthProvider from './context/AuthProvider'
+import ConfirmationDialogProvider from './context/ConfirmationDialogProvider'
 import './index.css'
 
 const client = new ApolloClient({

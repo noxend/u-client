@@ -1,6 +1,6 @@
-import CategoryTable from '@components/categories/CategoryTable'
-import RisksTable from '@components/risks/RiskTable'
 import { Tab, Tabs } from '@nextui-org/react'
+import CategoryTable from './components/categories/CategoryTable'
+import RisksTable from './components/risks/RiskTable'
 
 const tabs = [
 	{

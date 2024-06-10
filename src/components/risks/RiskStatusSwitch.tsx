@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client'
-import { UPDATE_RISK_RESOLVED } from '@gql/mutations'
 import { Switch } from '@nextui-org/react'
 import { FC } from 'react'
+import { UPDATE_RISK_RESOLVED } from '../../gql/mutations'
 
 const RiskStatusSwitch: FC<{ id: string; resolved: boolean }> = ({ id, resolved }) => {
 	const [updateRisk] = useMutation(UPDATE_RISK_RESOLVED, {})

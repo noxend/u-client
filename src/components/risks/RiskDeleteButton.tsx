@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/client'
-import DeleteButton from '@components/DeleteButton'
-import { DELETE_RISK } from '@gql/mutations'
-import { GET_RISKS } from '@gql/queries'
-import { useConfirmationDialog } from '@hooks/useConfirmationDialog'
 import { FC } from 'react'
+import { DELETE_RISK } from '../../gql/mutations'
+import { GET_RISKS } from '../../gql/queries'
+import { useConfirmationDialog } from '../../hooks/useConfirmationDialog'
+import DeleteButton from '../DeleteButton'
 
 const RiskDeleteButton: FC<{ id: string }> = ({ id }) => {
 	const { hideDialog } = useConfirmationDialog()

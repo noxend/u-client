@@ -1,7 +1,4 @@
 import { useMutation } from '@apollo/client'
-import { CREATE_CATEGORY } from '@gql/mutations'
-import { GET_CATEGORIES } from '@gql/queries'
-import useCurrentUser from '@hooks/useCurrentUser'
 import {
 	Button,
 	Modal,
@@ -14,6 +11,9 @@ import {
 import { Plus } from 'lucide-react'
 import { useRef } from 'react'
 import { SubmitHandler } from 'react-hook-form'
+import { CREATE_CATEGORY } from '../../gql/mutations'
+import { GET_CATEGORIES } from '../../gql/queries'
+import useCurrentUser from '../../hooks/useCurrentUser'
 import CategoryForm, { FormValues } from './CategoryForm'
 
 const CategoryCreateButton = () => {

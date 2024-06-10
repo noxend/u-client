@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client'
-import { GET_CATEGORIES } from '@gql/queries'
-import { Category } from '@gql/types/graphql'
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from '@nextui-org/react'
 import { useInfiniteScroll } from '@nextui-org/use-infinite-scroll'
 import { useDebounce } from '@uidotdev/usehooks'
 import { FC, useState } from 'react'
+import { GET_CATEGORIES } from '../../gql/queries'
+import { Category } from '../../gql/types/graphql'
 
 type CategorySelectProps = Omit<
 	AutocompleteProps<Category>,

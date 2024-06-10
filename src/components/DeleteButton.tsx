@@ -1,8 +1,8 @@
-import { ConfirmationDialogConfig } from '@context/ConfirmationDialogProvider'
-import { useConfirmationDialog } from '@hooks/useConfirmationDialog'
 import { Button } from '@nextui-org/react'
 import { Trash } from 'lucide-react'
 import { forwardRef } from 'react'
+import { ConfirmationDialogConfig } from '../context/ConfirmationDialogProvider'
+import { useConfirmationDialog } from '../hooks/useConfirmationDialog'
 
 type DeleteButtonProps = {
 	onDelete: () => void | Promise<void>

@@ -1,10 +1,10 @@
-import CategorySelect from '@components/categories/CategorySelect'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input, Switch } from '@nextui-org/react'
 import { forwardRef, useImperativeHandle } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { z } from 'zod'
+import CategorySelect from '../categories/CategorySelect'
 
 const formSchema = z.object({
 	description: z.string().min(1, { message: 'Description is required' }),

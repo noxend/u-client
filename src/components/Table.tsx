@@ -1,4 +1,3 @@
-import LoadingOverlay from '@components/LoadingOverlay'
 import {
 	Table as NextUITable,
 	Pagination,
@@ -9,6 +8,7 @@ import {
 	TableRow,
 } from '@nextui-org/react'
 import { Key, ReactNode, useMemo } from 'react'
+import LoadingOverlay from './LoadingOverlay'
 
 export type Column<T> = {
 	key: Key

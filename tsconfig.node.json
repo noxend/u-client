@@ -5,15 +5,7 @@
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"baseUrl": ".",
-		"paths": {
-			"@components/*": ["src/components/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@gql/*": ["src/gql/*"],
-			"@context/*": ["src/context/*"]
-		},
-		"jsx": "react-jsx"
+		"strict": true
 	},
-	"include": ["**/*.ts", "**/*.tsx"]
+	"include": ["vite.config.ts"]
 }
