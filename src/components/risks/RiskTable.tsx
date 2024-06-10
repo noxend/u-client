@@ -22,6 +22,7 @@ const RisksTable = () => {
 				setPage(risks.totalPages)
 			}
 		},
+		fetchPolicy: 'cache-and-network',
 	})
 
 	const currentData = data || previousData

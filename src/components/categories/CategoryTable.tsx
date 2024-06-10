@@ -19,6 +19,7 @@ const CategoriesTable = () => {
 			searchTerm: debouncedSearchTerm,
 			page,
 		},
+		fetchPolicy: 'cache-and-network',
 	})
 
 	const result = data || previousData
