@@ -56,7 +56,7 @@ const LoginForm: FC<{
 
 const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 	const [user, setUser] = useState<User | null>({
-		username: 'test',
+		username: '',
 	})
 
 	const login = (username: string) => {
