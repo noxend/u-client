@@ -21,6 +21,7 @@ const CategorySelect: FC<CategorySelectProps> = (props) => {
 		variables: {
 			searchTerm: debouncedInputValue,
 		},
+		fetchPolicy: 'cache-and-network',
 	})
 
 	const hasMore = data?.categories.page && data?.categories.page < data?.categories.totalPages
