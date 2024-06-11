@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client'
+import { NetworkStatus, useQuery } from '@apollo/client'
 import { useDebounce } from '@uidotdev/usehooks'
 import { useMemo, useState } from 'react'
 import { GET_CATEGORIES } from '../../gql/queries'
@@ -14,15 +14,16 @@ const CategoriesTable = () => {
 
 	const debouncedSearchTerm = useDebounce(searchTerm, 300)
 
-	const { data, loading, previousData } = useQuery(GET_CATEGORIES, {
+	const { data, loading, previousData, networkStatus } = useQuery(GET_CATEGORIES, {
 		variables: {
 			searchTerm: debouncedSearchTerm,
 			page,
 		},
 		fetchPolicy: 'cache-and-network',
+		notifyOnNetworkStatusChange: true,
 	})
 
-	const result = data || previousData
+	const result = loading ? previousData : data
 
 	const categories = (result?.categories.items || []).map((category) => ({
 		...category,
@@ -72,13 +73,15 @@ const CategoriesTable = () => {
 		[],
 	)
 
+	const isLoading = loading && networkStatus !== NetworkStatus.refetch
+
 	return (
 		<Table
 			totalPages={totalPages}
 			totalItems={totalItems}
 			topContent={topContent}
 			onPageChange={setPage}
-			isLoading={loading}
+			isLoading={isLoading}
 			data={categories}
 			columns={columns}
 			page={page}

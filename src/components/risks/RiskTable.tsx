@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client'
+import { NetworkStatus, useQuery } from '@apollo/client'
 import { Chip } from '@nextui-org/react'
 import { useMemo, useState } from 'react'
 import { GET_RISKS } from '../../gql/queries'
@@ -15,7 +15,7 @@ const RisksTable = () => {
 	const [page, setPage] = useState(1)
 	const [resolved, setResolved] = useState<boolean | undefined>()
 
-	const { loading, data, previousData } = useQuery(GET_RISKS, {
+	const { loading, data, previousData, networkStatus } = useQuery(GET_RISKS, {
 		variables: { page, resolved },
 		onCompleted: ({ risks }) => {
 			if (risks.totalPages < page) {
@@ -23,9 +23,10 @@ const RisksTable = () => {
 			}
 		},
 		fetchPolicy: 'cache-and-network',
+		notifyOnNetworkStatusChange: true,
 	})
 
-	const currentData = data || previousData
+	const currentData = loading ? previousData : data
 
 	const risks = (currentData?.risks.items || [])
 		.filter((risk) => !risk.isDeleted)
@@ -89,12 +90,14 @@ const RisksTable = () => {
 		[],
 	)
 
+	const isLoading = loading && networkStatus !== NetworkStatus.refetch
+
 	return (
 		<Table
 			data={risks}
 			columns={columns}
 			topContent={topContent}
-			isLoading={loading}
+			isLoading={isLoading}
 			onPageChange={setPage}
 			page={page}
 			totalItems={totalItems}
