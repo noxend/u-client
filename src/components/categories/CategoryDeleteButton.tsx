@@ -6,47 +6,47 @@ import { useConfirmationDialog } from '../../hooks/useConfirmationDialog'
 import DeleteButton from '../DeleteButton'
 
 const CategoryDeleteButton: FC<{
-	id: string
-	name: string
+  id: string
+  name: string
 }> = ({ id, name }) => {
-	const { hideDialog, updateConfig } = useConfirmationDialog()
+  const { hideDialog, updateConfig } = useConfirmationDialog()
 
-	const [delCategory] = useMutation(DELETE_CATEGORY, {
-		refetchQueries: [GET_CATEGORIES],
-		variables: {
-			id,
-		},
-		onCompleted: ({ deleteCategory }) => {
-			if (deleteCategory.confirmationRequired) {
-				updateConfig({
-					title: 'Delete Category',
-					message: deleteCategory.message,
-					onConfirm: async () => {
-						await delCategory({
-							variables: {
-								id,
-								confirm: true,
-							},
-						})
-					},
-				})
+  const [delCategory] = useMutation(DELETE_CATEGORY, {
+    refetchQueries: [GET_CATEGORIES],
+    variables: {
+      id,
+    },
+    onCompleted: ({ deleteCategory }) => {
+      if (deleteCategory.confirmationRequired) {
+        updateConfig({
+          title: 'Delete Category',
+          message: deleteCategory.message,
+          onConfirm: async () => {
+            await delCategory({
+              variables: {
+                id,
+                confirm: true,
+              },
+            })
+          },
+        })
 
-				return
-			}
+        return
+      }
 
-			hideDialog()
-		},
-	})
+      hideDialog()
+    },
+  })
 
-	return (
-		<DeleteButton
-			title="Delete Category"
-			message={`Are you sure you want to delete the category "${name}"?`}
-			onDelete={async () => {
-				await delCategory()
-			}}
-		/>
-	)
+  return (
+    <DeleteButton
+      title="Delete Category"
+      message={`Are you sure you want to delete the category "${name}"?`}
+      onDelete={async () => {
+        await delCategory()
+      }}
+    />
+  )
 }
 
 export default CategoryDeleteButton

@@ -6,37 +6,37 @@ import { useConfirmationDialog } from '../../hooks/useConfirmationDialog'
 import DeleteButton from '../DeleteButton'
 
 const RiskDeleteButton: FC<{ id: string }> = ({ id }) => {
-	const { hideDialog } = useConfirmationDialog()
+  const { hideDialog } = useConfirmationDialog()
 
-	const [deleteRisk] = useMutation(DELETE_RISK, {
-		variables: {
-			id,
-		},
-		optimisticResponse: {
-			deleteRisk: {
-				id,
-				isDeleted: true,
-				__typename: 'Risk',
-			},
-		},
-		update: (cache) => {
-			cache.evict({
-				id: cache.identify({ __typename: 'Risk', id }),
-			})
-		},
-		refetchQueries: [GET_RISKS],
-	})
+  const [deleteRisk] = useMutation(DELETE_RISK, {
+    variables: {
+      id,
+    },
+    optimisticResponse: {
+      deleteRisk: {
+        id,
+        isDeleted: true,
+        __typename: 'Risk',
+      },
+    },
+    update: (cache) => {
+      cache.evict({
+        id: cache.identify({ __typename: 'Risk', id }),
+      })
+    },
+    refetchQueries: [GET_RISKS],
+  })
 
-	return (
-		<DeleteButton
-			title="Delete risk"
-			message="Are you sure you want to delete this risk?"
-			onDelete={() => {
-				deleteRisk()
-				hideDialog()
-			}}
-		/>
-	)
+  return (
+    <DeleteButton
+      title="Delete risk"
+      message="Are you sure you want to delete this risk?"
+      onDelete={() => {
+        deleteRisk()
+        hideDialog()
+      }}
+    />
+  )
 }
 
 export default RiskDeleteButton

@@ -10,31 +10,31 @@ import ConfirmationDialogProvider from './context/ConfirmationDialogProvider'
 import './index.css'
 
 const client = new ApolloClient({
-	uri: import.meta.env.VITE_API_URL,
-	cache: new InMemoryCache({}),
-	resolvers: {
-		Risk: {
-			isDeleted: () => false,
-		},
-		Category: {
-			isDeleted: () => false,
-		},
-	},
+  uri: import.meta.env.VITE_API_URL,
+  cache: new InMemoryCache({}),
+  resolvers: {
+    Risk: {
+      isDeleted: () => false,
+    },
+    Category: {
+      isDeleted: () => false,
+    },
+  },
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
 root.render(
-	<React.StrictMode>
-		<NextUIProvider>
-			<ApolloProvider client={client}>
-				<ConfirmationDialogProvider>
-					<AuthProvider>
-						<App />
-						<Toaster />
-					</AuthProvider>
-				</ConfirmationDialogProvider>
-			</ApolloProvider>
-		</NextUIProvider>
-	</React.StrictMode>,
+  <React.StrictMode>
+    <NextUIProvider>
+      <ApolloProvider client={client}>
+        <ConfirmationDialogProvider>
+          <AuthProvider>
+            <App />
+            <Toaster />
+          </AuthProvider>
+        </ConfirmationDialogProvider>
+      </ApolloProvider>
+    </NextUIProvider>
+  </React.StrictMode>,
 )
