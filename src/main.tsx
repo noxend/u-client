@@ -31,7 +31,16 @@ root.render(
         <ConfirmationDialogProvider>
           <AuthProvider>
             <App />
-            <Toaster />
+            <Toaster
+              theme="system"
+              toastOptions={{
+                classNames: {
+                  error: 'bg-danger text-danger-foreground',
+                  default: 'bg-content1 text-content1-foreground',
+                },
+                className: 'shadow-small',
+              }}
+            />
           </AuthProvider>
         </ConfirmationDialogProvider>
       </ApolloProvider>

@@ -10,19 +10,19 @@ const formSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
 })
 
-export type FormValues = z.infer<typeof formSchema>
+export type CategoryFormValues = z.infer<typeof formSchema>
 
-type CategoryFormProps = {
-  onSubmit: (data: FormValues) => void
+export type CategoryFormProps = {
+  onSubmit: (data: CategoryFormValues) => void
 }
 
-type CategoryFormRef = {
+export type CategoryFormRef = {
   submit: () => void
 }
 
 const CategoryForm = forwardRef<CategoryFormRef, CategoryFormProps>(
   ({ onSubmit }, ref) => {
-    const { handleSubmit, control } = useForm<FormValues>({
+    const { handleSubmit, control } = useForm<CategoryFormValues>({
       resolver: zodResolver(formSchema),
       defaultValues: {
         description: '',

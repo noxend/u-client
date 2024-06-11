@@ -11,10 +11,14 @@ import {
 import { Plus } from 'lucide-react'
 import { useRef } from 'react'
 import { SubmitHandler } from 'react-hook-form'
+import { toast } from 'sonner'
 import { CREATE_CATEGORY } from '../../gql/mutations'
 import { GET_CATEGORIES } from '../../gql/queries'
 import useCurrentUser from '../../hooks/useCurrentUser'
-import CategoryForm, { FormValues } from './CategoryForm'
+import CategoryForm, {
+  CategoryFormRef,
+  CategoryFormValues,
+} from './CategoryForm'
 
 const CategoryCreateButton = () => {
   const { isOpen, onOpenChange, onOpen, onClose } = useDisclosure()
@@ -22,15 +26,19 @@ const CategoryCreateButton = () => {
   const [createCategory, { loading }] = useMutation(CREATE_CATEGORY, {
     refetchQueries: [GET_CATEGORIES],
     onCompleted: () => {
+      toast.success('Category created successfully')
       onClose()
+    },
+    onError: (error) => {
+      toast.error(error.message)
     },
   })
 
-  const formRef = useRef<{ submit: () => void }>(null)
+  const formRef = useRef<CategoryFormRef>(null)
 
   const user = useCurrentUser()
 
-  const handleFormSubmit: SubmitHandler<FormValues> = (data) => {
+  const handleFormSubmit: SubmitHandler<CategoryFormValues> = (data) => {
     createCategory({
       variables: {
         input: {

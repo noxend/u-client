@@ -30,6 +30,7 @@ const CategorySelect: FC<CategorySelectProps> = (props) => {
   const { data, previousData, loading, fetchMore } = useQuery(GET_CATEGORIES, {
     variables: {
       searchTerm: debouncedInputValue,
+      limit: 100,
     },
     fetchPolicy: 'cache-and-network',
   })

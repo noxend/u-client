@@ -11,26 +11,31 @@ import {
 import { Plus } from 'lucide-react'
 import { useRef } from 'react'
 import { SubmitHandler } from 'react-hook-form'
+import { toast } from 'sonner'
 import { CREATE_RISK } from '../../gql/mutations'
 import { GET_RISKS } from '../../gql/queries'
 import useCurrentUser from '../../hooks/useCurrentUser'
-import RiskForm, { FormValues } from './RiskForm'
+import RiskForm, { RiskFormRef, RiskFormValues } from './RiskForm'
 
 const RiskCreateButton = () => {
   const { isOpen, onOpenChange, onOpen, onClose } = useDisclosure()
 
-  const formRef = useRef<{ submit: () => void }>(null)
+  const formRef = useRef<RiskFormRef>(null)
 
   const [createRisk, { loading }] = useMutation(CREATE_RISK, {
     onCompleted: () => {
+      toast.success('Risk created successfully', { duration: 5000 })
       onClose()
+    },
+    onError: (error) => {
+      toast.error(error.message)
     },
     refetchQueries: [GET_RISKS],
   })
 
   const user = useCurrentUser()
 
-  const handleFormSubmit: SubmitHandler<FormValues> = (data) => {
+  const handleFormSubmit: SubmitHandler<RiskFormValues> = (data) => {
     createRisk({
       variables: {
         input: {

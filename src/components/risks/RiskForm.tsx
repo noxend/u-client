@@ -13,18 +13,18 @@ const formSchema = z.object({
   resolved: z.boolean(),
 })
 
-export type FormValues = z.infer<typeof formSchema>
+export type RiskFormValues = z.infer<typeof formSchema>
 
-type RiskFormProps = {
-  onSubmit: (data: FormValues) => void
+export type RiskFormProps = {
+  onSubmit: (data: RiskFormValues) => void
 }
 
-type RiskFormRef = {
+export type RiskFormRef = {
   submit: () => void
 }
 
 const RiskForm = forwardRef<RiskFormRef, RiskFormProps>(({ onSubmit }, ref) => {
-  const { handleSubmit, control } = useForm<FormValues>({
+  const { handleSubmit, control } = useForm<RiskFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       description: '',

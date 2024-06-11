@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client'
 import { FC } from 'react'
+import { toast } from 'sonner'
 import { DELETE_CATEGORY } from '../../gql/mutations'
 import { GET_CATEGORIES } from '../../gql/queries'
 import { useConfirmationDialog } from '../../hooks/useConfirmationDialog'
@@ -34,6 +35,7 @@ const CategoryDeleteButton: FC<{
         return
       }
 
+      toast.success('Category deleted successfully')
       hideDialog()
     },
   })
