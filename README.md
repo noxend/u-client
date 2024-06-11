@@ -5,3 +5,4 @@ To run the project, please follow these instructions:
 3. Run `npm install` in your terminal.
 4. Start the dev server with `npm run dev`.
 
+[https://u-client-production.up.railway.app/](https://u-client-production.up.railway.app/)
