@@ -27,7 +27,7 @@ const RiskDeleteButton: FC<{ id: string }> = ({ id }) => {
     },
     refetchQueries: [GET_RISKS],
     onCompleted: () => {
-      toast.success('Category deleted successfully')
+      toast.success('Risk deleted successfully')
     },
     onError: (error) => {
       toast.error(error.message)
