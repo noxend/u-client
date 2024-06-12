@@ -32,7 +32,7 @@ root.render(
           <AuthProvider>
             <App />
             <Toaster
-              theme="system"
+              theme="dark"
               toastOptions={{
                 classNames: {
                   error: 'bg-danger text-danger-foreground',
